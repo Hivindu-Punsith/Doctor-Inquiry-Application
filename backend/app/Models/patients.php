@@ -11,6 +11,5 @@ class patients extends Model
 
     protected $table = 'patients';
 
-    public $timestamps=false;
     protected $fillable=['name','address','phone','age','email','gender'];
 }
