@@ -6,9 +6,9 @@ use app\Models\patients;
 use app\Models\patientDetails;
 use App\Http\Controllers\PatientController;
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
 
 
 //GetAllPatients
@@ -16,9 +16,6 @@ Route::get('patients', [PatientController::class, 'getpatients']);
 
 //GetSpecificPatient
 Route::get('patient/{id}', [PatientController::class, 'getpatientbyID']);
-
-//addNewPatient
-Route::post('addPatient', 'App\Http\Controllers\PatientController@addPatient');
 
 //UpdatePatient
 Route::put('updatePatient/{id}', [PatientController::class, 'updatePatient']);
@@ -28,15 +25,11 @@ Route::delete('deletePatient/{id}', [PatientController::class, 'deletePatient'])
 
 
 
-
 //GetAllPatientsDetails
 Route::get('patientDetails', [PatientController::class, 'getpatientDetails']);
 
 //GetSpecificPatientsDetails
 Route::get('patientDetail/{id}', [PatientController::class, 'getpatientDetailsbyID']);
-
-//addNewPatientDetails
-Route::post('addPatientDetails', 'App\Http\Controllers\PatientController@addPatientDetails');
 
 //UpdatePatientDetails
 Route::put('updatePatientDetails/{id}', [PatientController::class, 'updatePatientDetails']);
@@ -51,3 +44,25 @@ Route::get('patientsphone/{phone}', [PatientController::class, 'getPatientByPhon
 
 //insertNewPatientWithDetails
 Route::post('insertNewPatientWithDetails/{id}', 'App\Http\Controllers\PatientController@insertNewPatientWithDetails');
+
+//getAllPatientDetailsByPhone
+Route::get('getPatientDetailsByPhone/{phone}', [PatientController::class, 'getPatientDetailsByPhone']);
+
+
+//register
+Route::post('register', 'App\Http\Controllers\PatientController@register');
+
+//login
+Route::post('login', 'App\Http\Controllers\PatientController@login');
+
+
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('/user', [PatientController::class, 'getUser']);
+    Route::post('/logout', [PatientController::class, 'logout']);
+    Route::post('/check-admin', [PatientController::class, 'checkAdmin']);
+});
+
+
+
+//insertNewPatientWithDetails
+Route::post('insertNewPatientWithDetails2/{id}', 'App\Http\Controllers\PatientController@insertNewPatientWithDetails2');

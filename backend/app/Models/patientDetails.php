@@ -10,8 +10,5 @@ class patientDetails extends Model
     use HasFactory;
 
     protected $table = 'patient_details';
-    
 
-    protected $fillable=['name','address','phone','age','email',
-                        'gender','date','time','description'];
 }
