@@ -11,6 +11,8 @@ class patients extends Model
 
     protected $table = 'patients';
 
+    protected $fillable = ['name','address','phone','age','email','gender'];
+
     public function patientDetails()
     {
         return $this->hasMany(patientDetails::class);

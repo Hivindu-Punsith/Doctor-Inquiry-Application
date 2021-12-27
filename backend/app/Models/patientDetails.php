@@ -11,4 +11,7 @@ class patientDetails extends Model
 
     protected $table = 'patient_details';
 
+    protected $fillable = ['patient_id','name','address','phone','age','email','gender','date',
+                            'time','description'];
+
 }
