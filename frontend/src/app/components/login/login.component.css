@@ -1,10 +1,16 @@
 .card{
     margin-top: 10px;
-    border: 10px;
+    outline: 500px;
     width: 500px;
+    outline-width: 10px;
     padding: 40px;
     position: absolute;
     top:50%;
     left: 50%;
     transform: translate(-50%,-50%);
+}
+
+.display{
+    font-family: "Courier New", Courier, monospace;
+    font-size: 40px;
 }

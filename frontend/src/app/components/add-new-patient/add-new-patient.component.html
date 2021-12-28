@@ -1,3 +1,4 @@
+<h1 class="display">New Appointment</h1>
 <form>
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Search By Phone Number</label>
@@ -13,42 +14,43 @@
         <div class="col">
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Name</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" [value]="patientDetails.name"  [(ngModel)]="newPatientDetails.name" [ngModelOptions]="{standalone:true}">
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Address</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" [value]="patientDetails.address" [(ngModel)]="newPatientDetails.address" [ngModelOptions]="{standalone:true}">
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Phone Number</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" [value]="patientDetails.phone" [(ngModel)]="newPatientDetails.phone" [ngModelOptions]="{standalone:true}">
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Age</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" [value]="patientDetails.age" [(ngModel)]="newPatientDetails.age" [ngModelOptions]="{standalone:true}">
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Email</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" [value]="patientDetails.email" [(ngModel)]="newPatientDetails.email" [ngModelOptions]="{standalone:true}">
             </div>
         </div>
         <div class="col">
 
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Gender</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" [value]="patientDetails.gender" [(ngModel)]="newPatientDetails.gender" [ngModelOptions]="{standalone:true}">
             </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Date</label>
-                <input type="text" class="form-control">
-            </div>
+            <div className="col-md-3">
+                <label for="date" className="form-label">Date:&nbsp;&nbsp;&nbsp;</label><br/>
+                <input type="date" className="form-control" [(ngModel)]="newPatientDetails.date" [ngModelOptions]="{standalone:true}">
+                
+              </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Time</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" [(ngModel)]="newPatientDetails.time" [ngModelOptions]="{standalone:true}">
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Description</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" [(ngModel)]="newPatientDetails.description" [ngModelOptions]="{standalone:true}">
             </div>
                <button type="submit" class="btn btn-primary">Submit</button>
         </div>

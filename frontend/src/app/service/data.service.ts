@@ -11,6 +11,10 @@ export class DataService {
   getPatientDetails(){
     return this.httpClient.get('http://127.0.0.1:8000/api/patientDetails');
   }
+
+  getPatients(){
+    return this.httpClient.get('http://127.0.0.1:8000/api/patients');
+  }
   
   register(data:any){
     return this.httpClient.post('http://127.0.0.1:8000/api/register',data);

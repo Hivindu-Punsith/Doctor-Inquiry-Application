@@ -29,7 +29,8 @@ class UserController extends Controller
             ]);
 
             $user->save();
-            return response()->json(['message' => 'User has been registered..!'], 200);
+            return response()->json(['message' => 'User has been registered..!','status'=>200]);
+
         } catch (Exception $exception) {
 
             return  response()->json(['message' => ($exception->getMessage())]);
@@ -46,7 +47,7 @@ class UserController extends Controller
             ]);
 
             if (!Auth::attempt($request->only('email', 'password'))) {
-                return response()->json(['message' => 'Unauthorized User..!'], 401);
+                return response()->json(['message' => 'Unauthorized User..!','status'=>401]);
             }
 
             $user = User::where("email", $request->email)->select(['id', 'name', 'email', 'roles'])->first();
@@ -54,7 +55,8 @@ class UserController extends Controller
             $token->plainTextToken;
 
             Arr::add($user, 'token', $token);
-            return response()->json($user);
+            return response()->json([$user,'status'=>200]);
+            
         } catch (Exception $exception) {
 
             return  response()->json(['message' => ($exception->getMessage())]);
