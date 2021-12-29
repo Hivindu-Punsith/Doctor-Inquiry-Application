@@ -9,59 +9,60 @@
 </form>
 <br>
 
-<form (ngSubmit)="insertData()">
+<form (ngSubmit)="insertData()" [formGroup]="addPatentForm">
     <div class="row">
         <div class="col">
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Name</label>
-                <input type="text" class="form-control"  [(ngModel)]="patientDetails.name" 
-                [ngModelOptions]="{standalone:true}" >
+                <input type="text" class="form-control" [(ngModel)]="patientDetails.name" formControlName="name">
+                <span class="error" *ngIf="name?.invalid && name?.touched">Field Required</span>
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Address</label>
-                <input type="text" class="form-control" [(ngModel)]="patientDetails.address"
-                 [ngModelOptions]="{standalone:true}">
+                <input type="text" class="form-control" [(ngModel)]="patientDetails.address" formControlName="address">
+                <span class="error" *ngIf="address?.invalid && address?.touched">Field Required</span>
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Phone Number</label>
-                <input type="text" class="form-control"  [(ngModel)]="patientDetails.phone" 
-                [ngModelOptions]="{standalone:true}">
+                <input type="text" class="form-control" [(ngModel)]="patientDetails.phone" formControlName="phonee">
+                <span class="error" *ngIf="phonee?.invalid && phonee?.touched">Field Required</span>
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Age</label>
-                <input type="text" class="form-control" [(ngModel)]="patientDetails.age" 
-                [ngModelOptions]="{standalone:true}">
+                <input type="text" class="form-control" [(ngModel)]="patientDetails.age" formControlName="age">
+                <span class="error" *ngIf="age?.invalid && age?.touched">Field Required</span>
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Email</label>
-                <input type="text" class="form-control" [(ngModel)]="patientDetails.email"
-                [ngModelOptions]="{standalone:true}">
+                <input type="text" class="form-control" [(ngModel)]="patientDetails.email" formControlName="email">
+                <span class="error" *ngIf="email?.invalid && email?.touched">Valid Email Required</span>
             </div>
         </div>
         <div class="col">
 
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Gender</label>
-                <input type="text" class="form-control"  [(ngModel)]="patientDetails.gender" 
-                [ngModelOptions]="{standalone:true}">
+                <input type="text" class="form-control" [(ngModel)]="patientDetails.gender" formControlName="gender">
+                <span class="error" *ngIf="gender?.invalid && gender?.touched">Field Required</span>
             </div>
             <div className="col-md-3">
-                <label for="date" className="form-label">Date:&nbsp;&nbsp;&nbsp;</label><br/>
-                <input type="date" className="form-control" [(ngModel)]="patientDetails.date" 
-                [ngModelOptions]="{standalone:true}">
-                
-              </div>
+                <label for="date" className="form-label">Date:&nbsp;&nbsp;&nbsp;</label><br />
+                <input type="date" className="form-control" [(ngModel)]="patientDetails.date" formControlName="date">
+                <span class="error" *ngIf="date?.invalid && date?.touched">Field Required</span>
+
+            </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Time</label>
-                <input type="text" class="form-control" [(ngModel)]="patientDetails.time" 
-                [ngModelOptions]="{standalone:true}">
+                <input type="text" class="form-control" [(ngModel)]="patientDetails.time" formControlName="time">
+                <span class="error" *ngIf="time?.invalid && time?.touched">Field Required</span>
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Description</label>
-                <input type="text" class="form-control" [(ngModel)]="patientDetails.description" 
-                [ngModelOptions]="{standalone:true}">
+                <input type="text" class="form-control" [(ngModel)]="patientDetails.description"
+                    formControlName="description">
+                <span class="error" *ngIf="description?.invalid && description?.touched">Field Required</span>
             </div>
-               <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" [disabled]="addPatentForm.invalid">Submit</button>
         </div>
     </div>
 </form>

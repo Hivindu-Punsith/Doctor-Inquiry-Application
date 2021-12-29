@@ -34,10 +34,6 @@ export class DataService {
     return this.httpClient.get(`${baseUrl}user`);
   }
 
-  logOut(data:any){
-    return this.httpClient.post(`${baseUrl}logout`,data);
-  }
-
   searchByPhone(phone: any) {
     return this.httpClient.get(`${baseUrl}patientsphone/` + phone);
   }
