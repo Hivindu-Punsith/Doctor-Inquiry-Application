@@ -3,6 +3,8 @@ import { FormControl } from '@angular/forms';
 import { DataService } from 'src/app/service/data.service';
 import { Alldetails } from 'src/app/alldetails';
 import { PatientDetails } from 'src/app/patient-details';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-new-patient',
@@ -13,19 +15,19 @@ export class AddNewPatientComponent implements OnInit {
   phone = new FormControl();
   id: any;
   patientDetails= new PatientDetails();
-  newPatientDetails = new Alldetails();
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService,private router: Router) {}
 
   ngOnInit(): void {
     this.detailsOfpatient();
     this.insertData();
   }
 
+
   detailsOfpatient() {
     this.dataService.searchByPhone(this.phone.value).subscribe((res:any) => {
-      console.log(res);
-      alert('Exist Patient..!');
+      
+      Swal.fire('PATIENT FOUND!', '', 'success')
       this.patientDetails.name=res.name;
       this.patientDetails.id=res.id;
       this.patientDetails.address=res.address;
@@ -38,10 +40,10 @@ export class AddNewPatientComponent implements OnInit {
 
   insertData() {
     this.dataService
-      .insertPatient(this.patientDetails.id, this.newPatientDetails)
-      .subscribe((res) => {
-        alert('New Appointment Added..!');
-        window.location.replace('/home');
+      .insertPatient(this.patientDetails.id, this.patientDetails).subscribe((res) => {
+
+        Swal.fire('New Appointment Added..!', '', 'success');
+        this.router.navigate(['/home']);
       });
   }
 }

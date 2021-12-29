@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {DataSource} from '@angular/cdk/collections';
 import {Observable, ReplaySubject} from 'rxjs';
 import { DataService } from 'src/app/service/data.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -12,23 +13,8 @@ import { DataService } from 'src/app/service/data.service';
 export class HomeComponent implements OnInit {
 
   patientDetails:any;
-  dataSource:any;
   
   constructor(private dataService:DataService) { }
-
-  displayedColums=[
-                    "id",
-                    "name",
-                    "address",
-                    "phone",
-                    "age",
-                    "email",
-                    "gender",
-                    "date",
-                    "time",
-                    "description"
-  ];
-
 
   ngOnInit(): void {
     this.getPatientsData();
@@ -36,9 +22,15 @@ export class HomeComponent implements OnInit {
 
   getPatientsData(){
     this.dataService.getPatientDetails().subscribe(res=>{
-     this.dataSource=res;
+     this.patientDetails=res;
+
     });
   }
 
-  
+  deleteDetails(id:any){
+    this.dataService.deletePatientDetails(id).subscribe(res=>{
+      Swal.fire('DELETE SUCCESFUL..!', '', 'success') 
+      this.getPatientsData(); 
+  });
+  }
 }

@@ -1,34 +1,67 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { baseUrl } from 'src/environments/environment';
+import { Router } from '@angular/router';
+
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DataService {
+  constructor(private httpClient: HttpClient,private _router: Router) {}
 
-  constructor(private httpClient:HttpClient) { }
-
-  getPatientDetails(){
-    return this.httpClient.get('http://127.0.0.1:8000/api/patientDetails');
+  getPatientDetails() {
+    return this.httpClient.get(`${baseUrl}patientDetails` );
   }
 
-  getPatients(){
-    return this.httpClient.get('http://127.0.0.1:8000/api/patients');
-  }
-  
-  register(data:any){
-    return this.httpClient.post('http://127.0.0.1:8000/api/register',data);
+  getPatients() {
+    return this.httpClient.get(`${baseUrl}patients`);
   }
 
-  login(data:any){
-    return this.httpClient.post('http://127.0.0.1:8000/api/login',data);
+  register(data: any) {
+    return this.httpClient.post(`${baseUrl}register`, data);
   }
 
-  searchByPhone(phone:any){
-    return this.httpClient.get('http://127.0.0.1:8000/api/patientsphone/'+phone);
+  login(data: any) {
+    return this.httpClient.post(`${baseUrl}login`, data);
   }
 
-  insertPatient(id:any,data:any){
-    return this.httpClient.post('http://127.0.0.1:8000/api/insertNewPatientWithDetails/'+id,data);
+  getToken(){
+    return localStorage.getItem('token');
+  }
+
+  getUser() {
+    return this.httpClient.get(`${baseUrl}user`);
+  }
+
+  logOut(data:any){
+    return this.httpClient.post(`${baseUrl}logout`,data);
+  }
+
+  searchByPhone(phone: any) {
+    return this.httpClient.get(`${baseUrl}patientsphone/` + phone);
+  }
+
+  insertPatient(id: any, data: any) {
+    return this.httpClient.post(
+      `${baseUrl}insertNewPatientWithDetails/` + id,
+      data
+    );
+  }
+
+  deletePatientDetails(id: any) {
+    return this.httpClient.delete(`${baseUrl}deletePatientDetails/` + id);
+  }
+
+  deletePatient(id: any) {
+    return this.httpClient.delete(`${baseUrl}deletePatient/` + id);
+  }
+
+  updatePatient(id:any,data:any){
+    return this.httpClient.put(`${baseUrl}updatePatient/`+id,data)
+  }
+
+  getPatientByID(id:any){
+    return this.httpClient.get(`${baseUrl}patient/`+id);
   }
 }

@@ -1,4 +1,4 @@
-export class PatientDetails {
+export class Patient {
     id:any;
     name:any;
     address:any;
@@ -6,8 +6,4 @@ export class PatientDetails {
     age:any;
     email:any;
     gender:any;
-    date:any;
-    time:any;
-    description:any;
-
 }

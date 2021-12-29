@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -10,7 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MatTableModule } from '@angular/material/table';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { FormsModule } from '@angular/forms';
@@ -22,6 +21,8 @@ import { PatientsDetailsComponent } from './components/patients-details/patients
 import { PatientsComponent } from './patients/patients.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { EditPatientComponent } from './components/edit-patient/edit-patient.component';
+import { AuthenticationService } from './service/authentication.service';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -30,6 +31,7 @@ const appRoutes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'addinquiry', component: AddNewPatientComponent },
   { path: 'patients', component: PatientsDetailsComponent },
+  { path: 'editPatients/:id', component: EditPatientComponent },
 ];
 
 @NgModule({
@@ -42,6 +44,7 @@ const appRoutes: Routes = [
     AddNewPatientComponent,
     PatientsDetailsComponent,
     PatientsComponent,
+    EditPatientComponent,
 
   ],
 
@@ -60,8 +63,13 @@ const appRoutes: Routes = [
     NgChartsModule,
     MatPaginatorModule,
     MatSortModule,
+
   ],
-  providers: [],
+  providers: [{
+    provide:HTTP_INTERCEPTORS,
+    useClass:AuthenticationService,
+    multi:true
+   }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

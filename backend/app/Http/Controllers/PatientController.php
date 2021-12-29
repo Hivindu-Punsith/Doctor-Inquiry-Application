@@ -94,7 +94,7 @@ class PatientController extends Controller
 
 
 
-  public function deletePatientDetails(Request $request, $id)
+  public function deletePatientDetails( $id)
   {
     $patientdetails = patientDetails::find($id);
     if (is_null($patientdetails)) {
@@ -147,7 +147,7 @@ class PatientController extends Controller
       $validator = Validator::make($request->all(), $rules);
 
       if ($validator->fails()) {
-        return response()->json($validator->errors(), 401);
+        return response()->json($validator->errors(), 400);
       } else {
         $patient = patients::find($id);
 
