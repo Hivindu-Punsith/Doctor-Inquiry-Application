@@ -11,11 +11,21 @@ export class DataService {
   constructor(private httpClient: HttpClient,private _router: Router) {}
 
   getPatientDetails() {
-    return this.httpClient.get(`${baseUrl}patientDetails` );
+    const httpOptions = {
+      headers: new HttpHeaders({
+      Authorization: `Token ${localStorage.getItem('token')}`
+      })
+    };
+    return this.httpClient.get(`${baseUrl}patientDetails`,httpOptions );
   }
 
   getPatients() {
-    return this.httpClient.get(`${baseUrl}patients`);
+    const httpOptions = {
+      headers: new HttpHeaders({
+      Authorization: `Token ${localStorage.getItem('token')}`
+      })
+    };
+    return this.httpClient.get(`${baseUrl}patients`,httpOptions);
   }
 
   register(data: any) {

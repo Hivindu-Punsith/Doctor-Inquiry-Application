@@ -18,11 +18,11 @@ import { AddNewPatientComponent } from './components/add-new-patient/add-new-pat
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NgChartsModule } from 'ng2-charts';
 import { PatientsDetailsComponent } from './components/patients-details/patients-details.component';
-import { PatientsComponent } from './patients/patients.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { EditPatientComponent } from './components/edit-patient/edit-patient.component';
 import { AuthenticationService } from './service/authentication.service';
+import { PatientsComponent } from './components/patients/patients.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -32,6 +32,7 @@ const appRoutes: Routes = [
   { path: 'addinquiry', component: AddNewPatientComponent },
   { path: 'patients', component: PatientsDetailsComponent },
   { path: 'editPatients/:id', component: EditPatientComponent },
+  {path: 'dataSource', component:PatientsComponent}
 ];
 
 @NgModule({
@@ -43,8 +44,8 @@ const appRoutes: Routes = [
     SignupComponent,
     AddNewPatientComponent,
     PatientsDetailsComponent,
-    PatientsComponent,
     EditPatientComponent,
+    PatientsComponent,
 
   ],
 
