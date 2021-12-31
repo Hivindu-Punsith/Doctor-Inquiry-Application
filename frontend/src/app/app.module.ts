@@ -23,6 +23,9 @@ import { MatSortModule } from '@angular/material/sort';
 import { EditPatientComponent } from './components/edit-patient/edit-patient.component';
 import { AuthenticationService } from './service/authentication.service';
 import { PatientsComponent } from './components/patients/patients.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -46,6 +49,7 @@ const appRoutes: Routes = [
     PatientsDetailsComponent,
     EditPatientComponent,
     PatientsComponent,
+    
 
   ],
 
@@ -64,6 +68,8 @@ const appRoutes: Routes = [
     NgChartsModule,
     MatPaginatorModule,
     MatSortModule,
+    MatFormFieldModule,
+    MatSelectModule
 
   ],
   providers: [{

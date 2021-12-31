@@ -25,7 +25,7 @@ export class PatientsComponent implements AfterViewInit {
     'phone',
     'age',
     'email',
-    'gender',
+    'gender'
   ];
 
   constructor(private dataService: DataService) {}

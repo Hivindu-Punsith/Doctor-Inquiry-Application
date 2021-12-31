@@ -23,7 +23,6 @@ export class HomeComponent implements OnInit {
   getPatientsData(){
     this.dataService.getPatientDetails().subscribe(res=>{
      this.patientDetails=res;
-
     });
   }
 
