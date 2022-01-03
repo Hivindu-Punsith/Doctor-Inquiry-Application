@@ -1,13 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Mail\sendMail;
 use Illuminate\Http\Request;
 use App\Models\patients;
 use App\Models\patientDetails;
 use Exception;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Mail;
 
 
 class PatientController extends Controller
@@ -168,6 +170,16 @@ class PatientController extends Controller
 
           $PatientDetails->save();
 
+          $details =[
+            'title'=>'Your Appointment Details' ,
+            'body'=>$PatientDetails->name,
+            'time'=>$PatientDetails->time,
+            'date'=>$PatientDetails->date,
+            'description'=>$PatientDetails->description
+          ];
+
+          Mail::to($PatientDetails->email)->send(new sendMail($details));
+
           return response()->json(['message' => 'Patient Details Added..!']);
         } else {
 
@@ -199,6 +211,16 @@ class PatientController extends Controller
             $PatientDetails->description = $request->description;
 
             $PatientDetails->save();
+
+            $details =[
+              'title'=>'Your Appointment Details' ,
+              'body'=>$PatientDetails->name,
+              'time'=>$PatientDetails->time,
+              'date'=>$PatientDetails->date,
+              'description'=>$PatientDetails->description
+            ];
+  
+            Mail::to($PatientDetails->email)->send(new sendMail($details));
           });
           return response()->json(['message' => 'Patient Details and new patient Added..!']);
         }
