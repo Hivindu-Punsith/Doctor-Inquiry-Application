@@ -25,7 +25,8 @@ import { AuthenticationService } from './service/authentication.service';
 import { PatientsComponent } from './components/patients/patients.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
-
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import {MatIconModule} from '@angular/material/icon';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -69,7 +70,9 @@ const appRoutes: Routes = [
     MatPaginatorModule,
     MatSortModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    NgxMaterialTimepickerModule,
+    MatIconModule
 
   ],
   providers: [{

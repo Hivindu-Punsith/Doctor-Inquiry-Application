@@ -4,6 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { DataService } from 'src/app/service/data.service';
 import { PatientsDataSource, PatientsItem } from './patients-datasource';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-patients',
@@ -25,7 +26,8 @@ export class PatientsComponent implements AfterViewInit {
     'phone',
     'age',
     'email',
-    'gender'
+    'gender',
+    'actions'
   ];
 
   constructor(private dataService: DataService) {}
@@ -40,5 +42,14 @@ export class PatientsComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+  }
+
+
+
+  deletePatient(id:any){
+    this.dataService.deletePatient(id).subscribe(res=>{
+      Swal.fire('DELETE SUCCESFUL..!', '', 'success') 
+      this.ngOnInit(); 
+  });
   }
 }

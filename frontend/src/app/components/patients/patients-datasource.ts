@@ -19,7 +19,7 @@ export interface PatientsItem {
 // TODO: replace this with real data from your application
 const data: PatientsItem[] = [];
 
-/**
+/** 
  * Data source for the Patients view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
