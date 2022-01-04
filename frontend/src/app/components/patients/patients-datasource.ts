@@ -1,9 +1,6 @@
 import { DataSource } from '@angular/cdk/collections';
-import { MatPaginator } from '@angular/material/paginator';
 import { DataService } from 'src/app/service/data.service';
-import { MatSort } from '@angular/material/sort';
-import { map } from 'rxjs/operators';
-import { Observable, of as observableOf, merge, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 // TODO: Replace this with your own data model type
 export interface PatientsItem {
@@ -16,30 +13,23 @@ export interface PatientsItem {
   gender: string;
 }
 
-// TODO: replace this with real data from your application
-const data: PatientsItem[] = [];
-
-/** 
- * Data source for the Patients view. This class should
- * encapsulate all logic for fetching and manipulating the displayed data
- * (including sorting, pagination, and filtering).
- */
 export class PatientsDataSource extends DataSource<PatientsItem> {
-  data: PatientsItem[] = data;
-  paginator: MatPaginator | undefined;
-  sort: MatSort | undefined;
+  data: any;
+  patients: any;
 
   constructor(private dataService: DataService) {
     super();
   }
 
-  public patientDataStream = new BehaviorSubject([]);
-  /**
-   * Connect this data source to the table. The table will only update when
-   * the returned stream emits new items.
-   * @returns A stream of the items to be rendered.
-   */
+  patientDataStream: BehaviorSubject<PatientsItem[]> = new BehaviorSubject<PatientsItem[]>([]);
+
   connect(): Observable<PatientsItem[]> {
+    //console.log('connected');
+    if (!this.patientDataStream.isStopped)
+      this.dataService.getPatients().subscribe((res: any) => {
+        this.patientDataStream.next(res);
+      });
+
     return this.patientDataStream.asObservable();
   }
 

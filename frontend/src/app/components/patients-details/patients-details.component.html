@@ -23,8 +23,9 @@
             <td>{{pDetails.gender}}</td>
 
             <td>
-                <button class="btn btn-danger btn-sm" (click)="deletePatient(pDetails.id)">Delete</button>
-                <button class="btn btn-warning btn-sm mx-2" routerLink="/editPatients/{{pDetails.id}}">Edit</button>
+    
+                <button mat-icon-button color="warn" (click)="deletePatient(pDetails.id)"><mat-icon>delete_outline</mat-icon></button>
+                <button mat-icon-button color="primary" routerLink="/editPatients/{{pDetails.id}}"><mat-icon>edit_outline</mat-icon></button>
 
             </td>
         </tr>

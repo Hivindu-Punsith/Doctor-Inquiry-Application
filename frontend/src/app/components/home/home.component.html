@@ -37,8 +37,7 @@
             <td>{{pDetails.time}}</td>
             <td>{{pDetails.description}}</td>
             <td>
-                <button class="btn btn-danger btn-sm" (click)="deleteDetails(pDetails.id)">Delete</button>
-
+                <button mat-icon-button color="warn" (click)="deleteDetails(pDetails.id)"><mat-icon>delete_outline</mat-icon></button>
             </td>
         </tr>
     </tbody>
