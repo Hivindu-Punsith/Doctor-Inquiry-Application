@@ -178,7 +178,7 @@ class PatientController extends Controller
             'description'=>$PatientDetails->description
           ];
 
-          Mail::to($PatientDetails->email)->send(new sendMail($details));
+          Mail::to($PatientDetails->email)->queue(new sendMail($details));
 
           return response()->json(['message' => 'Patient Details Added..!']);
         } else {
