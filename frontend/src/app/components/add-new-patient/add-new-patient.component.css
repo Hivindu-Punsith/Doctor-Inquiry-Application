@@ -30,3 +30,8 @@ input.ng-valid{
 .form{
     margin-bottom: 100px;
 }  
+#input{
+    width: 250px;
+    height: 40px;
+    border-radius: 5px;
+}

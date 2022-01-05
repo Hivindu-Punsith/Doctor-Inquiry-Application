@@ -33,11 +33,11 @@ export class AddNewPatientComponent implements OnInit {
     address: new FormControl('',Validators.required),
     phonee: new FormControl('',[Validators.required,Validators.minLength(10),Validators.pattern('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$')]),
     name: new FormControl('',[Validators.required,Validators.pattern('^[a-zA-Z ]*$')]),
-    gender: new FormControl('',Validators.required),
+    gender: new FormControl('',[Validators.required,Validators.pattern('^[a-zA-Z ]*$')]),
     date: new FormControl('',Validators.required),
     time: new FormControl('',Validators.required),
     description: new FormControl('',[Validators.required,Validators.maxLength(400)]),
-    age: new FormControl('',[Validators.required,Validators.minLength(1),Validators.maxLength(3)]),
+    age: new FormControl('',[Validators.required,Validators.minLength(1),Validators.maxLength(3),Validators.pattern('[0-9]+')]),
 
   })
   
